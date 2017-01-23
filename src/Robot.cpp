@@ -77,12 +77,15 @@ void Robot::TeleopInit() {
 	// these lines or comment it out.
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
-	//manualDrive->Start();
+	manualDrive->Start();
+
 }
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
-	drive.MecanumDrive_Cartesian(oi.getJoystick1()->getX(),oi.getJoystick1()->getY(),oi.getJoystick1()->getZ());
+	//Robot::drive->MecanumDrive_Cartesian(-(Robot::oi->getJoystick1()->GetX()),
+	//			                      	 -(Robot::oi->getJoystick1()->GetThrottle()),
+	//									 -(Robot::oi->getJoystick1()->GetY()));
 }
 
 void Robot::TestPeriodic() {
